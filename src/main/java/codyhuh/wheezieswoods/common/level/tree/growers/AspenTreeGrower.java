@@ -1,6 +1,6 @@
 package codyhuh.wheezieswoods.common.level.tree.growers;
 
-import codyhuh.wheezieswoods.core.registry.ModFeatures;
+import codyhuh.wheezieswoods.core.registry.ModConfiguredFeatures;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
@@ -12,7 +12,7 @@ public class AspenTreeGrower extends AbstractTreeGrower {
     @Nullable
     @Override
     protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource randomSource, boolean b) {
-        return ModFeatures.ASPEN;
+        return ModConfiguredFeatures.ASPEN_TREE;
     }
 }
 
