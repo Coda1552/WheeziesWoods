@@ -86,7 +86,8 @@
       "minecraft:patch_pumpkin",
       "wheezieswoods:trees_aspen",
       "wheezieswoods:patch_tall_grass",
-      "wheezieswoods:patch_aspen_flowers"
+      "wheezieswoods:patch_flowers_aspen",
+      "wheezieswoods:huge_mushroom_aspen"
     ],
     [
       "minecraft:freeze_top_layer"
