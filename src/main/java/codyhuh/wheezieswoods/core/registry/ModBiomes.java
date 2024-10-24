@@ -52,7 +52,8 @@ public class ModBiomes {
 
     biomeGenBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.TREES_ASPEN);
     biomeGenBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_TALL_GRASS);
-    biomeGenBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_ASPEN_FLOWERS);
+    biomeGenBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.PATCH_FLOWERS_ASPEN);
+    biomeGenBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.HUGE_MUSHROOM_ASPEN);
 
     MobSpawnSettings.Builder mobSpawnBuilder = new MobSpawnSettings.Builder();
     BiomeDefaultFeatures.farmAnimals(mobSpawnBuilder);
