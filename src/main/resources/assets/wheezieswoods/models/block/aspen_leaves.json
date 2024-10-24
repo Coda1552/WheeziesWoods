@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "wheezieswoods:block/aspen_leaves"
+  },
+  "render_type": "cutout"
+}

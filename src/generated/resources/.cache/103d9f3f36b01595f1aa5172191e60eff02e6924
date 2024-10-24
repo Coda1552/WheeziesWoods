@@ -1,0 +1,8 @@
+// 1.20.1	2024-10-24T01:34:30.8671766	Registries
+abb133e1e483d4dce158d6fadd569d6d40d483cd data/wheezieswoods/blueprint/modded_biome_slices/wheezies_woods.json
+79fa92e5348e6ff8f5ebeb93db8a8dfc19bba72d data/wheezieswoods/worldgen/biome/aspen_grove.json
+244d3573c9b229cbac8a85e734b64cc3104d6f52 data/wheezieswoods/worldgen/configured_feature/aspen_grove_flowers.json
+5610b991e828b21499f35f8d74099241bc0181dd data/wheezieswoods/worldgen/configured_feature/aspen_tree.json
+48a0f9da451ee05e4450c612353420e5d7c6883e data/wheezieswoods/worldgen/placed_feature/patch_aspen_flowers.json
+23e56b8578ee1dd8a86d0b8ef92133c77a74a7ab data/wheezieswoods/worldgen/placed_feature/patch_tall_grass.json
+2d7e47a3f5343aee744b7e6f919763c2fcba7a16 data/wheezieswoods/worldgen/placed_feature/trees_aspen.json
