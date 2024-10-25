@@ -5,5 +5,14 @@
 
   "block.wheezieswoods.aspen_sapling": "Aspen Sapling",
   "block.wheezieswoods.aspen_log": "Aspen Log",
-  "block.wheezieswoods.aspen_leaves": "Aspen Leaves"
+  "block.wheezieswoods.aspen_leaves": "Aspen Leaves",
+  "block.wheezieswoods.aspen_planks": "Aspen Planks",
+  "block.wheezieswoods.aspen_button": "Aspen Button",
+  "block.wheezieswoods.aspen_fence": "Aspen Fence",
+  "block.wheezieswoods.aspen_fence_gate": "Aspen Fence Gate",
+  "block.wheezieswoods.aspen_door": "Aspen Door",
+  "block.wheezieswoods.aspen_trapdoor": "Aspen Trapdoor",
+  "block.wheezieswoods.aspen_slab": "Aspen Slab",
+  "block.wheezieswoods.aspen_stairs": "Aspen Stairs",
+  "block.wheezieswoods.aspen_pressure_plate": "Aspen Pressure Plate"
 }
