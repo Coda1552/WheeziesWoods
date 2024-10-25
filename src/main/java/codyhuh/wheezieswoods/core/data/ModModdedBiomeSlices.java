@@ -1,4 +1,4 @@
-package codyhuh.wheezieswoods.core.data.server;
+package codyhuh.wheezieswoods.core.data;
 
 import codyhuh.wheezieswoods.WheeziesWoods;
 import codyhuh.wheezieswoods.core.registry.ModBiomes;
