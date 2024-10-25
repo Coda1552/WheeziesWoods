@@ -1,6 +1,7 @@
 package codyhuh.wheezieswoods.core.data;
 
 import codyhuh.wheezieswoods.core.registry.ModBlocks;
+import codyhuh.wheezieswoods.core.registry.ModItems;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
@@ -39,23 +40,23 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(ModBlocks.ASPEN_DOOR.get(),
                 block -> createDoorTable(ModBlocks.ASPEN_DOOR.get()));
 
-//        this.add(ModBlocks.ASPEN_SIGN.get(),
-//                block -> createSingleItemTable(ModItems.ASPEN_SIGN.get()));
-//        this.add(ModBlocks.ASPEN_WALL_SIGN.get(),
-//                block -> createSingleItemTable(ModItems.ASPEN_SIGN.get()));
-//        this.add(ModBlocks.ASPEN_HANGING_SIGN.get(),
-//                block -> createSingleItemTable(ModItems.ASPEN_HANGING_SIGN.get()));
-//        this.add(ModBlocks.ASPEN_WALL_HANGING_SIGN.get(),
-//                block -> createSingleItemTable(ModItems.ASPEN_HANGING_SIGN.get()));
+        this.add(ModBlocks.ASPEN_SIGN.get(),
+                block -> createSingleItemTable(ModItems.ASPEN_SIGN.get()));
+        this.add(ModBlocks.ASPEN_WALL_SIGN.get(),
+                block -> createSingleItemTable(ModItems.ASPEN_SIGN.get()));
+        this.add(ModBlocks.ASPEN_HANGING_SIGN.get(),
+                block -> createSingleItemTable(ModItems.ASPEN_HANGING_SIGN.get()));
+        this.add(ModBlocks.ASPEN_WALL_HANGING_SIGN.get(),
+                block -> createSingleItemTable(ModItems.ASPEN_HANGING_SIGN.get()));
 
         this.dropSelf(ModBlocks.ASPEN_LOG.get());
-//        this.dropSelf(ModBlocks.STRIPPED_ASPEN_STEM.get());
-//        this.dropSelf(ModBlocks.ASPEN_WOOD.get());
-//        this.dropSelf(ModBlocks.STRIPPED_ASPEN_WOOD.get());
+        this.dropSelf(ModBlocks.STRIPPED_ASPEN_LOG.get());
+        this.dropSelf(ModBlocks.ASPEN_WOOD.get());
+        this.dropSelf(ModBlocks.STRIPPED_ASPEN_WOOD.get());
 
         this.dropSelf(ModBlocks.ASPEN_SAPLING.get());
-//        this.add(ModBlocks.POTTED_ASPEN_SAPLING.get(),
-//                createPotFlowerItemTable(ModBlocks.ASPEN_SAPLING.get()));
+        this.add(ModBlocks.POTTED_ASPEN_SAPLING.get(),
+                createPotFlowerItemTable(ModBlocks.ASPEN_SAPLING.get()));
 
         this.add(ModBlocks.ASPEN_LEAVES.get(), (p_280937_) -> {
             return this.createLeavesDrops(p_280937_, ModBlocks.ASPEN_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES);

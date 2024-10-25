@@ -2,6 +2,7 @@ package codyhuh.wheezieswoods.core.data;
 
 import codyhuh.wheezieswoods.WheeziesWoods;
 import codyhuh.wheezieswoods.core.registry.ModBlocks;
+import codyhuh.wheezieswoods.core.registry.ModItems;
 import codyhuh.wheezieswoods.core.registry.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -64,12 +65,12 @@ public class ItemTagGenerator extends ItemTagsProvider {
                 ModBlocks.ASPEN_PRESSURE_PLATE.get().asItem()
         );
 
-//        this.tag(ItemTags.SIGNS).add(
-//                ModItems.ASPEN_SIGN.get()
-//        );
-//
-//        this.tag(ItemTags.HANGING_SIGNS).add(
-//                ModItems.ASPEN_HANGING_SIGN.get()
-//        );
+        this.tag(ItemTags.SIGNS).add(
+                ModItems.ASPEN_SIGN.get()
+        );
+
+        this.tag(ItemTags.HANGING_SIGNS).add(
+                ModItems.ASPEN_HANGING_SIGN.get()
+        );
     }
 }

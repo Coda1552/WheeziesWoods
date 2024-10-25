@@ -2,6 +2,7 @@ package codyhuh.wheezieswoods.core.data;
 
 import codyhuh.wheezieswoods.WheeziesWoods;
 import codyhuh.wheezieswoods.core.registry.ModBlocks;
+import codyhuh.wheezieswoods.core.registry.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -35,6 +36,9 @@ public class ItemModelGenerator extends ItemModelProvider {
 
         fenceItem(ModBlocks.ASPEN_FENCE, ModBlocks.ASPEN_PLANKS);
         buttonItem(ModBlocks.ASPEN_BUTTON, ModBlocks.ASPEN_PLANKS);
+
+        simpleItem(ModItems.ASPEN_SIGN);
+        simpleItem(ModItems.ASPEN_HANGING_SIGN);
     }
 
 

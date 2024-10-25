@@ -1,11 +1,13 @@
 package codyhuh.wheezieswoods.core.data;
 
 import codyhuh.wheezieswoods.core.registry.ModBlocks;
+import codyhuh.wheezieswoods.core.registry.ModItems;
 import codyhuh.wheezieswoods.core.registry.ModTags;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
@@ -38,24 +40,24 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         makePressurePlate(ModBlocks.ASPEN_PRESSURE_PLATE, ModBlocks.ASPEN_PLANKS).save(consumer);
 
         //Aspen sign
-//        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.ASPEN_SIGN.get(), 3)
-//                .pattern("SSS")
-//                .pattern("SSS")
-//                .pattern(" # ")
-//                .define('S', ModBlocks.ASPEN_PLANKS.get())
-//                .define('#', Tags.Items.RODS_WOODEN)
-//                .unlockedBy(getHasName(ModBlocks.ASPEN_STEM.get()), has(ModBlocks.ASPEN_STEM.get()))
-//                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.ASPEN_SIGN.get(), 3)
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern(" # ")
+                .define('S', ModBlocks.ASPEN_PLANKS.get())
+                .define('#', Tags.Items.RODS_WOODEN)
+                .unlockedBy(getHasName(ModBlocks.ASPEN_LOG.get()), has(ModBlocks.ASPEN_LOG.get()))
+                .save(consumer);
 
         //Aspen hanging sign
-//        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.ASPEN_HANGING_SIGN.get(), 6)
-//                .pattern("# #")
-//                .pattern("SSS")
-//                .pattern("SSS")
-//                .define('#', Items.CHAIN)
-//                .define('S', ModTags.Items.ASPEN_LOG_ITEM)
-//                .unlockedBy(getHasName(ModBlocks.ASPEN_STEM.get()), has(ModBlocks.ASPEN_STEM.get()))
-//                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.ASPEN_HANGING_SIGN.get(), 6)
+                .pattern("# #")
+                .pattern("SSS")
+                .pattern("SSS")
+                .define('#', Items.CHAIN)
+                .define('S', ModTags.Items.ASPEN_LOG_ITEM)
+                .unlockedBy(getHasName(ModBlocks.ASPEN_LOG.get()), has(ModBlocks.ASPEN_LOG.get()))
+                .save(consumer);
 
     }
 

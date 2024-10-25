@@ -4,7 +4,11 @@
   "biome.wheezieswoods.aspen_grove": "Aspen Grove",
 
   "block.wheezieswoods.aspen_sapling": "Aspen Sapling",
+  "block.wheezieswoods.potted_aspen_sapling": "Potted Aspen Sapling",
   "block.wheezieswoods.aspen_log": "Aspen Log",
+  "block.wheezieswoods.stripped_aspen_stem": "Stripped Aspen Log",
+  "block.wheezieswoods.aspen_wood": "Aspen Wood",
+  "block.wheezieswoods.stripped_aspen_wood": "Stripped Aspen Wood",
   "block.wheezieswoods.aspen_leaves": "Aspen Leaves",
   "block.wheezieswoods.aspen_planks": "Aspen Planks",
   "block.wheezieswoods.aspen_button": "Aspen Button",
@@ -14,5 +18,10 @@
   "block.wheezieswoods.aspen_trapdoor": "Aspen Trapdoor",
   "block.wheezieswoods.aspen_slab": "Aspen Slab",
   "block.wheezieswoods.aspen_stairs": "Aspen Stairs",
-  "block.wheezieswoods.aspen_pressure_plate": "Aspen Pressure Plate"
+  "block.wheezieswoods.aspen_pressure_plate": "Aspen Pressure Plate",
+
+  "block.wheezieswoods.aspen_sign": "Aspen Sign",
+  "block.wheezieswoods.aspen_wall_sign": "Aspen Sign",
+  "block.wheezieswoods.aspen_wall_hanging_sign": "Aspen Hanging Sign",
+  "block.wheezieswoods.aspen_hanging_sign": "Aspen Hanging Sign"
 }

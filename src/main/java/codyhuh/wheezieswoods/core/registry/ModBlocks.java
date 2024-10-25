@@ -1,7 +1,9 @@
 package codyhuh.wheezieswoods.core.registry;
 
 import codyhuh.wheezieswoods.WheeziesWoods;
+import codyhuh.wheezieswoods.common.blocks.*;
 import codyhuh.wheezieswoods.common.level.tree.growers.AspenTreeGrower;
+import codyhuh.wheezieswoods.core.util.ModWoodTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -27,9 +29,22 @@ import java.util.function.Supplier;
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, WheeziesWoods.MOD_ID);
 
-    public static final RegistryObject<Block> ASPEN_SAPLING = register("aspen_sapling", () -> new SaplingBlock(new AspenTreeGrower(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).instabreak().ignitedByLava().noCollission().sound(SoundType.GRASS)));
+    public static final RegistryObject<Block> ASPEN_SAPLING = register("aspen_sapling",
+            () -> new SaplingBlock(new AspenTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)
+                    .mapColor(MapColor.COLOR_LIGHT_GREEN).instabreak().ignitedByLava().noCollission().sound(SoundType.GRASS)));
 
-    public static final RegistryObject<Block> ASPEN_LOG = registerRotatedPillar("aspen_log", () -> Blocks.STRIPPED_BIRCH_LOG, BlockBehaviour.Properties.copy(Blocks.BIRCH_LOG).ignitedByLava());
+    public static final RegistryObject<Block> POTTED_ASPEN_SAPLING = registerExcludeFromTab("potted_aspen_sapling",
+            ()-> new FlowerPotBlock(()-> ((FlowerPotBlock) Blocks.FLOWER_POT), ModBlocks.ASPEN_SAPLING,
+                    BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM).noOcclusion()));
+
+    public static final RegistryObject<Block> ASPEN_LOG = register ("aspen_log",
+            () -> new FlammableWoodLogBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> STRIPPED_ASPEN_LOG = register ("stripped_aspen_log",
+            () -> new FlammableWoodLogBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> ASPEN_WOOD = register ("aspen_wood",
+            () -> new FlammableWoodLogBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> STRIPPED_ASPEN_WOOD = register ("stripped_aspen_wood",
+            () -> new FlammableWoodLogBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG).sound(SoundType.WOOD)));
 
     public static final RegistryObject<Block> ASPEN_LEAVES = register("aspen_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_LEAVES).ignitedByLava()));
 
@@ -104,7 +119,19 @@ public class ModBlocks {
             ()-> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).noOcclusion(), BlockSetType.OAK));
     public static final RegistryObject<Block> ASPEN_TRAPDOOR = register("aspen_trapdoor",
             ()-> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).noOcclusion(),BlockSetType.OAK));
+    
+    
+    public static final RegistryObject<Block> ASPEN_SIGN = BLOCKS.register("aspen_sign",
+            () -> new ModStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_SIGN), ModWoodTypes.ASPEN));
 
+    public static final RegistryObject<Block> ASPEN_WALL_SIGN = BLOCKS.register("aspen_wall_sign",
+            () -> new ModWallSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_WALL_SIGN), ModWoodTypes.ASPEN));
+
+    public static final RegistryObject<Block> ASPEN_HANGING_SIGN = BLOCKS.register("aspen_hanging_sign",
+            () -> new ModHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_HANGING_SIGN), ModWoodTypes.ASPEN));
+
+    public static final RegistryObject<Block> ASPEN_WALL_HANGING_SIGN = BLOCKS.register("aspen_wall_hanging_sign",
+            () -> new ModWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_WALL_HANGING_SIGN), ModWoodTypes.ASPEN));
 
 
     private static RegistryObject<Block> registerRotatedPillar(String name, Supplier<Block> stripped, BlockBehaviour.Properties properties) {
@@ -133,4 +160,15 @@ public class ModBlocks {
             ModItems.ITEMS.register(name, () -> item == null ? new BlockItem(registryObject.get(), itemProperties) : item.apply(registryObject.get(), itemProperties));
         return registryObject;
     }
+
+    private static <T extends Block> RegistryObject<T> registerExcludeFromTab(String name, Supplier<T> block){
+        RegistryObject<T> toReturn = BLOCKS.register(name, block);
+        //registerBlockItem(name, toReturn);
+        return toReturn;
+    }
+
+//    private static <T extends Block>RegistryObject<Item> registerBlockItem(String name,RegistryObject<T> block){
+//        return ModItems.ITEMS.register(name, ()-> new BlockItem(block.get(), new Item.Properties()));
+//    }
+
 }

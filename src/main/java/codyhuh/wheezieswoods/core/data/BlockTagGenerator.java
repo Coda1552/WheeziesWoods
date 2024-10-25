@@ -35,13 +35,13 @@ public class BlockTagGenerator extends BlockTagsProvider {
                 ModBlocks.ASPEN_DOOR.get(),
                 ModBlocks.ASPEN_TRAPDOOR.get(),
                 ModBlocks.ASPEN_LOG.get()
-//                ,ModBlocks.STRIPPED_ASPEN_LOG.get(),
-//                ModBlocks.ASPEN_WOOD.get(),
-//                ModBlocks.STRIPPED_ASPEN_WOOD.get(),
-//                ModBlocks.ASPEN_SIGN.get(),
-//                ModBlocks.ASPEN_WALL_SIGN.get(),
-//                ModBlocks.ASPEN_HANGING_SIGN.get(),
-//                ModBlocks.ASPEN_WALL_HANGING_SIGN.get()
+                ,ModBlocks.STRIPPED_ASPEN_LOG.get(),
+                ModBlocks.ASPEN_WOOD.get(),
+                ModBlocks.STRIPPED_ASPEN_WOOD.get(),
+                ModBlocks.ASPEN_SIGN.get(),
+                ModBlocks.ASPEN_WALL_SIGN.get(),
+                ModBlocks.ASPEN_HANGING_SIGN.get(),
+                ModBlocks.ASPEN_WALL_HANGING_SIGN.get()
         );
 
         this.tag(BlockTags.PLANKS).add(
@@ -50,9 +50,9 @@ public class BlockTagGenerator extends BlockTagsProvider {
 
         this.tag(ModTags.Blocks.ASPEN_LOG_BLOCK).add(
                 ModBlocks.ASPEN_LOG.get()
-//                ,ModBlocks.STRIPPED_ASPEN_LOG.get(),
-//                ModBlocks.ASPEN_WOOD.get(),
-//                ModBlocks.STRIPPED_ASPEN_WOOD.get()
+                ,ModBlocks.STRIPPED_ASPEN_LOG.get(),
+                ModBlocks.ASPEN_WOOD.get(),
+                ModBlocks.STRIPPED_ASPEN_WOOD.get()
         );
 
         this.tag(BlockTags.LOGS_THAT_BURN).addTag(
@@ -96,21 +96,21 @@ public class BlockTagGenerator extends BlockTagsProvider {
                 ModBlocks.ASPEN_PRESSURE_PLATE.get()
         );
 
-//        this.tag(BlockTags.SIGNS).add(
-//                ModBlocks.ASPEN_SIGN.get()
-//        );
+        this.tag(BlockTags.SIGNS).add(
+                ModBlocks.ASPEN_SIGN.get()
+        );
 
-//        this.tag(BlockTags.WALL_SIGNS).add(
-//                ModBlocks.ASPEN_WALL_SIGN.get()
-//        );
+        this.tag(BlockTags.WALL_SIGNS).add(
+                ModBlocks.ASPEN_WALL_SIGN.get()
+        );
 
-//        this.tag(BlockTags.CEILING_HANGING_SIGNS).add(
-//                ModBlocks.ASPEN_HANGING_SIGN.get()
-//        );
-//
-//        this.tag(BlockTags.WALL_HANGING_SIGNS).add(
-//                ModBlocks.ASPEN_WALL_HANGING_SIGN.get()
-//        );
+        this.tag(BlockTags.CEILING_HANGING_SIGNS).add(
+                ModBlocks.ASPEN_HANGING_SIGN.get()
+        );
+
+        this.tag(BlockTags.WALL_HANGING_SIGNS).add(
+                ModBlocks.ASPEN_WALL_HANGING_SIGN.get()
+        );
 
     }
 }
