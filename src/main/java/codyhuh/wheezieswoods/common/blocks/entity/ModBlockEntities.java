@@ -22,8 +22,4 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register( "mod_hanging_sign", () ->
                     BlockEntityType.Builder.of(ModHangingSignBlockEntity::new,
                             ModBlocks.ASPEN_HANGING_SIGN.get(), ModBlocks.ASPEN_WALL_HANGING_SIGN.get()).build(null));
-
-    public static void register(IEventBus eventBus){
-        BLOCK_ENTITIES.register(eventBus);
-    }
 }
