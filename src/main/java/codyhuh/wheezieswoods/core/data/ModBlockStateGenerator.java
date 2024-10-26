@@ -61,7 +61,6 @@ public class ModBlockStateGenerator extends BlockStateProvider {
         return key(block).getPath();
     }
 
-<<<<<<< HEAD
     private ResourceLocation key(Block block) {
         return ForgeRegistries.BLOCKS.getKey(block);
     }
@@ -70,13 +69,9 @@ public class ModBlockStateGenerator extends BlockStateProvider {
         simpleBlockItem(blockRegistryObject.get(), new ModelFile.UncheckedModelFile(WheeziesWoods.MOD_ID +
                 ":block/" + ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath()));
     }
-    
-    private void blockWithItem(RegistryObject<Block> blockRegistryObject){
+
+    private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject
                 .get()));
-=======
-    private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
-        simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
->>>>>>> master
     }
 }
