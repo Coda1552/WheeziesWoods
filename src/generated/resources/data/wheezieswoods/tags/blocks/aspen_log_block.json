@@ -1,5 +1,8 @@
 {
   "values": [
-    "wheezieswoods:aspen_log"
+    "wheezieswoods:aspen_log",
+    "wheezieswoods:stripped_aspen_log",
+    "wheezieswoods:aspen_wood",
+    "wheezieswoods:stripped_aspen_wood"
   ]
 }

@@ -38,40 +38,14 @@ public class WheeziesWoods {
         ModItems.ITEMS.register(bus);
         ModTabs.CREATIVE_TABS.register(bus);
         ModBlockEntities.register(bus);
-        bus.addListener(this::dataSetup);
         bus.addListener(this::commonSetup);
     }
 
-    private void dataSetup(final GatherDataEvent event) {
-        final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
-                .add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap)
-                .add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap)
-                .add(Registries.BIOME, ModBiomes::bootstrap)
-                .add(BlueprintDataPackRegistries.MODDED_BIOME_SLICES, ModModdedBiomeSlices::bootstrap);
-        DataGenerator generator = event.getGenerator();
-        PackOutput packOutput = generator.getPackOutput();
-        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-
-        boolean server = event.includeServer();
-
-        DatapackBuiltinEntriesProvider datapackBuiltinEntriesProvider = new DatapackBuiltinEntriesProvider(packOutput, lookupProvider, BUILDER, Set.of(MOD_ID));
-        generator.addProvider(server, datapackBuiltinEntriesProvider);
-        //generator.addProvider(server, new ModChunkGeneratorModifierProvider(packOutput, lookupProvider));
-    }
-
     private void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(()->{
+        event.enqueueWork(() -> {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.ASPEN_SAPLING.getId(), ModBlocks.POTTED_ASPEN_SAPLING);
             ComposterBlock.COMPOSTABLES.put(ModBlocks.ASPEN_SAPLING.get().asItem(), 0.4F);
             ComposterBlock.COMPOSTABLES.put(ModBlocks.ASPEN_LEAVES.get().asItem(), 0.4F);
         });
-    }
-
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            Sheets.addWoodType(ModWoodTypes.ASPEN);
-        }
     }
 }

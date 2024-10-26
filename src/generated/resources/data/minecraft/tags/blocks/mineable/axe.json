@@ -9,6 +9,13 @@
     "wheezieswoods:aspen_fence_gate",
     "wheezieswoods:aspen_door",
     "wheezieswoods:aspen_trapdoor",
-    "wheezieswoods:aspen_log"
+    "wheezieswoods:aspen_log",
+    "wheezieswoods:stripped_aspen_log",
+    "wheezieswoods:aspen_wood",
+    "wheezieswoods:stripped_aspen_wood",
+    "wheezieswoods:aspen_sign",
+    "wheezieswoods:aspen_wall_sign",
+    "wheezieswoods:aspen_hanging_sign",
+    "wheezieswoods:aspen_wall_hanging_sign"
   ]
 }

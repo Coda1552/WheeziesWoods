@@ -1,8 +1,10 @@
-// 1.20.1	2024-10-25T01:57:08.6143311	Tags for minecraft:item mod id wheezieswoods
+// 1.20.1	2024-10-25T20:32:58.1928194	Tags for minecraft:item mod id wheezieswoods
 3b6d3ef2d77abd49f73de5ff8747903d45c83b3c data/minecraft/tags/items/fence_gates.json
+87e203fa048108963bf4dd72a3721f5458f1db41 data/minecraft/tags/items/hanging_signs.json
 e464bd064270b63e4496f25e6b60a3f22bd3558a data/minecraft/tags/items/leaves.json
 27abc8555184e326ba9bbdd32eb186b0f83b473f data/minecraft/tags/items/logs_that_burn.json
 2ef2fc28c365b32f32c86a8f5371ea967a1d5e76 data/minecraft/tags/items/planks.json
+3fd27042b3a340b9833c7b7bce1a847ee23912d1 data/minecraft/tags/items/signs.json
 e4205363796b42ec8a013a3a584949ac7040d5a5 data/minecraft/tags/items/wooden_buttons.json
 9fc9c088d5563387c2bf253fa63f27436da23ff2 data/minecraft/tags/items/wooden_doors.json
 9eaedb716f398251bea403de46777a8806cbfb4a data/minecraft/tags/items/wooden_fences.json
@@ -10,4 +12,4 @@ f4c70c6bb901b6723f8cad101ed0ce72a1232def data/minecraft/tags/items/wooden_pressu
 e960d51941d603925650c947e0a8d32a654c8943 data/minecraft/tags/items/wooden_slabs.json
 b760bc6bf505398033f1594799697d106bcf072e data/minecraft/tags/items/wooden_stairs.json
 db1a3c75d18c8709e52da27e36f09d978b5d60bc data/minecraft/tags/items/wooden_trapdoors.json
-bc45ac990db559ce4301001245762b228e1d68cc data/wheezieswoods/tags/items/aspen_log_item.json
+b0837518e7b6e05b9ab2de48004c2a3fa8ab5a90 data/wheezieswoods/tags/items/aspen_log_item.json
