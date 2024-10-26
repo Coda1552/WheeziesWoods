@@ -10,9 +10,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-
 @Mod(WheeziesWoods.MOD_ID)
 public class WheeziesWoods {
     public static final String MOD_ID = "wheezieswoods";
@@ -23,8 +20,8 @@ public class WheeziesWoods {
         ModBlocks.BLOCKS.register(bus);
         ModItems.ITEMS.register(bus);
         ModTabs.CREATIVE_TABS.register(bus);
-        ModEntities.register(bus);
         ModBlockEntities.BLOCK_ENTITIES.register(bus);
+        ModEntities.ENTITY_TYPES.register(bus);
         bus.addListener(this::commonSetup);
     }
 
