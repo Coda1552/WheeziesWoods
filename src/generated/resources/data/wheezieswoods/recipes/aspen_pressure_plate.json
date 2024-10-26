@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "B": {
+      "item": "wheezieswoods:aspen_planks"
+    }
+  },
+  "pattern": [
+    "BB"
+  ],
+  "result": {
+    "item": "wheezieswoods:aspen_pressure_plate"
+  },
+  "show_notification": true
+}

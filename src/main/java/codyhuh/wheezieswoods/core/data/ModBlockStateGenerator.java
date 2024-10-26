@@ -61,6 +61,7 @@ public class ModBlockStateGenerator extends BlockStateProvider {
         return key(block).getPath();
     }
 
+<<<<<<< HEAD
     private ResourceLocation key(Block block) {
         return ForgeRegistries.BLOCKS.getKey(block);
     }
@@ -73,5 +74,9 @@ public class ModBlockStateGenerator extends BlockStateProvider {
     private void blockWithItem(RegistryObject<Block> blockRegistryObject){
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject
                 .get()));
+=======
+    private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
+        simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
+>>>>>>> master
     }
 }
