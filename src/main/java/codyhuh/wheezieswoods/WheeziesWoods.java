@@ -1,7 +1,7 @@
 package codyhuh.wheezieswoods;
 
 import codyhuh.wheezieswoods.common.blocks.entity.ModBlockEntities;
-import codyhuh.wheezieswoods.core.data.server.ModModdedBiomeSlices;
+import codyhuh.wheezieswoods.core.data.ModModdedBiomeSlices;
 import codyhuh.wheezieswoods.core.registry.*;
 import codyhuh.wheezieswoods.core.util.ModWoodTypes;
 import com.teamabnormals.blueprint.core.registry.BlueprintDataPackRegistries;
