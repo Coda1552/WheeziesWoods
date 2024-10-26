@@ -23,5 +23,10 @@
   "block.wheezieswoods.aspen_sign": "Aspen Sign",
   "block.wheezieswoods.aspen_wall_sign": "Aspen Sign",
   "block.wheezieswoods.aspen_wall_hanging_sign": "Aspen Hanging Sign",
-  "block.wheezieswoods.aspen_hanging_sign": "Aspen Hanging Sign"
+  "block.wheezieswoods.aspen_hanging_sign": "Aspen Hanging Sign",
+
+  "entity.wheezieswoods.mod_boat": "Boat",
+  "entity.wheezieswoods.mod_chest_boat": "Boat With Chest",
+  "item.wheezieswoods.aspen_boat": "Aspen Boat",
+  "item.wheezieswoods.aspen_chest_boat": "Aspen Boat With Chest"
 }

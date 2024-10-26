@@ -38,6 +38,7 @@ public class WheeziesWoods {
         ModItems.ITEMS.register(bus);
         ModTabs.CREATIVE_TABS.register(bus);
         ModBlockEntities.register(bus);
+        ModEntities.register(bus);
         bus.addListener(this::commonSetup);
     }
 

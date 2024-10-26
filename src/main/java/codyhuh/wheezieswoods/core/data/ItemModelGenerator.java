@@ -39,6 +39,9 @@ public class ItemModelGenerator extends ItemModelProvider {
 
         simpleItem(ModItems.ASPEN_SIGN);
         simpleItem(ModItems.ASPEN_HANGING_SIGN);
+
+        simpleItem(ModItems.ASPEN_BOAT);
+        simpleItem(ModItems.ASPEN_CHEST_BOAT);
     }
 
 
