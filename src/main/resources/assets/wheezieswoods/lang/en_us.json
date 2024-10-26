@@ -26,7 +26,10 @@
   "block.wheezieswoods.aspen_hanging_sign": "Aspen Hanging Sign",
 
   "entity.wheezieswoods.mod_boat": "Boat",
-  "entity.wheezieswoods.mod_chest_boat": "Boat With Chest",
+  "entity.wheezieswoods.mod_chest_boat": "Boat with Chest",
   "item.wheezieswoods.aspen_boat": "Aspen Boat",
-  "item.wheezieswoods.aspen_chest_boat": "Aspen Boat With Chest"
+  "item.wheezieswoods.aspen_chest_boat": "Aspen Boat with Chest",
+
+  "item.wheezieswoods.ox_spawn_egg": "Ox Spawn Egg",
+  "entity.wheezieswoods.ox": "Ox"
 }

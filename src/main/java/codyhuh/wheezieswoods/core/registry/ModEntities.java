@@ -3,9 +3,9 @@ package codyhuh.wheezieswoods.core.registry;
 import codyhuh.wheezieswoods.WheeziesWoods;
 import codyhuh.wheezieswoods.common.entity.ModBoatEntity;
 import codyhuh.wheezieswoods.common.entity.ModChestBoatEntity;
+import codyhuh.wheezieswoods.common.entity.OxEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -13,6 +13,10 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, WheeziesWoods.MOD_ID);
+
+    public static final RegistryObject<EntityType<OxEntity>> OX =
+            ENTITY_TYPES.register("ox", () -> EntityType.Builder.of(OxEntity::new, MobCategory.CREATURE)
+                    .sized(1.4f, 1.2f).build("ox"));
 
     public static final RegistryObject<EntityType<ModBoatEntity>> MOD_BOAT =
             ENTITY_TYPES.register("mod_boat", () -> EntityType.Builder.<ModBoatEntity>of(ModBoatEntity::new, MobCategory.MISC)

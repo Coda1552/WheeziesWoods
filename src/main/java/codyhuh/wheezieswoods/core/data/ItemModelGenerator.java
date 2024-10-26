@@ -42,8 +42,14 @@ public class ItemModelGenerator extends ItemModelProvider {
 
         simpleItem(ModItems.ASPEN_BOAT);
         simpleItem(ModItems.ASPEN_CHEST_BOAT);
+
+        spawnEgg(ModItems.OX_SPAWN_EGG);
     }
 
+    private ItemModelBuilder spawnEgg(RegistryObject<Item> item){
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/template_spawn_egg"));
+    }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item){
         return withExistingParent(item.getId().getPath(),
