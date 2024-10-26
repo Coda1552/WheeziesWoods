@@ -22,10 +22,10 @@ public class ModItems {
             ()-> new SignItem(new Item.Properties().stacksTo(16), ModBlocks.ASPEN_SIGN.get(), ModBlocks.ASPEN_WALL_SIGN.get()));
 
     public static final RegistryObject<Item> ASPEN_BOAT = ITEMS.register("aspen_boat",
-            () -> new ModBoatItem(false, ModBoatEntity.Type.ASPEN, new Item.Properties()));
+            () -> new ModBoatItem(false, ModBoatEntity.Type.ASPEN, new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> ASPEN_CHEST_BOAT = ITEMS.register("aspen_chest_boat",
-            () -> new ModBoatItem(true, ModBoatEntity.Type.ASPEN, new Item.Properties()));
+            () -> new ModBoatItem(true, ModBoatEntity.Type.ASPEN, new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> ASPEN_HANGING_SIGN = ITEMS.register("aspen_hanging_sign",
             ()-> new HangingSignItem(ModBlocks.ASPEN_HANGING_SIGN.get(), ModBlocks.ASPEN_WALL_HANGING_SIGN.get(),new Item.Properties().stacksTo(16)));
