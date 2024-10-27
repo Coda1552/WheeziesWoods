@@ -18,6 +18,6 @@ public class OxRenderer extends MobRenderer<OxEntity, OxModel<OxEntity>> {
 
     @Override
     public ResourceLocation getTextureLocation(OxEntity entity) {
-        return entity.isDaisyCovered() ? DAISY_TEXTURE : TEXTURE;
+        return entity.getVariant() == 1 ? DAISY_TEXTURE : TEXTURE;
     }
 }
