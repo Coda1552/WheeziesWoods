@@ -59,7 +59,7 @@ public class OxEntity extends Animal implements NeutralMob {
         this.goalSelector.addGoal(1, new PanicGoal(this, 2.0D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.of(Items.HANGING_ROOTS), false));
-        this.goalSelector.addGoal(4, new ChargeBannerGoal(this, 1.5D, 16));
+        //this.goalSelector.addGoal(4, new ChargeBannerGoal(this, 1.5D, 16));
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
@@ -98,7 +98,7 @@ public class OxEntity extends Animal implements NeutralMob {
     }
 
     protected void blockedByShield(LivingEntity p_33361_) {
-        if (this.random.nextBoolean()) {
+        if (this.random.nextFloat() > 0.25F) {
             this.stunnedTick = 80;
             this.playSound(SoundEvents.RAVAGER_STUNNED, 1.0F, 1.0F);
             this.level().broadcastEntityEvent(this, (byte)39);
