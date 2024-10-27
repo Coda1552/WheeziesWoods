@@ -90,6 +90,11 @@ public class OxEntity extends Animal implements NeutralMob {
     }
 
     @Override
+    public float getVoicePitch() {
+        return 0.6F;
+    }
+
+    @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
@@ -122,11 +127,22 @@ public class OxEntity extends Animal implements NeutralMob {
         }
 
         if (stack.is(Items.BUCKET) && !this.isBaby()) {
-            player.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
+            player.playSound(SoundEvents.COW_MILK, 0.6F, 1.0F);
             ItemStack itemstack1 = ItemUtils.createFilledResult(stack, player, Items.MILK_BUCKET.getDefaultInstance());
             player.setItemInHand(hand, itemstack1);
-            //setTarget(player);
-            setPersistentAngerTarget(player.getUUID());
+
+            if (getVariant() != 1) {
+                setPersistentAngerTarget(player.getUUID());
+
+                playSound(SoundEvents.COW_HURT, 0.6F, 0.5F);
+                if (level() instanceof ServerLevel server) {
+                    for (int i = 0; i < 30; i++) {
+
+                        server.sendParticles(ParticleTypes.CRIT, getRandomX(1.0D), getRandomY(), getRandomZ(1.0D), 0, 0.0D, 0.0D, 0.0D, 0.0D);
+                    }
+                }
+            }
+
             return InteractionResult.sidedSuccess(this.level().isClientSide);
         } else {
             return super.mobInteract(player, hand);
