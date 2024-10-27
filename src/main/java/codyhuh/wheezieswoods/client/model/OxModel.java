@@ -62,8 +62,16 @@ public class OxModel<T extends OxEntity> extends AgeableHierarchicalModel<T> {
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.root().getAllParts().forEach(ModelPart::resetPose);
 
-		this.head.xRot += headPitch * ((float)Math.PI / 180F);
-		this.head.yRot += netHeadYaw * ((float)Math.PI / 180F);
+		if (entity.stunnedTick > 0) {
+			this.head.xRot += Mth.cos(ageInTicks * 0.35F) * 0.2F;
+			this.head.zRot += -Mth.cos(ageInTicks * 0.35F) * 0.2F;
+			this.head.yRot += Mth.sin(ageInTicks * 0.35F) * 0.2F;
+		}
+		else {
+			this.head.xRot += headPitch * ((float)Math.PI / 180F);
+			this.head.yRot += netHeadYaw * ((float)Math.PI / 180F);
+		}
+
 		this.rightBackLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 		this.leftBackLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 		this.rightFrontLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;

@@ -1,5 +1,6 @@
 package codyhuh.wheezieswoods.common.entity;
 
+import codyhuh.wheezieswoods.common.entity.goal.ChargeBannerGoal;
 import codyhuh.wheezieswoods.core.registry.ModEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -45,6 +46,7 @@ public class OxEntity extends Animal implements NeutralMob {
     private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(15, 29);
     @Nullable
     private UUID persistentAngerTarget;
+    public int stunnedTick;
 
     public OxEntity(EntityType<? extends Animal> p_28285_, Level p_28286_) {
         super(p_28285_, p_28286_);
@@ -57,6 +59,7 @@ public class OxEntity extends Animal implements NeutralMob {
         this.goalSelector.addGoal(1, new PanicGoal(this, 2.0D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.of(Items.HANGING_ROOTS), false));
+        this.goalSelector.addGoal(4, new ChargeBannerGoal(this, 1.5D, 16));
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
@@ -94,10 +97,21 @@ public class OxEntity extends Animal implements NeutralMob {
         return 0.6F;
     }
 
+    protected void blockedByShield(LivingEntity p_33361_) {
+        if (this.random.nextBoolean()) {
+            this.stunnedTick = 80;
+            this.playSound(SoundEvents.RAVAGER_STUNNED, 1.0F, 1.0F);
+            this.level().broadcastEntityEvent(this, (byte)39);
+            p_33361_.push(this);
+        }
+
+        p_33361_.hurtMarked = true;
+
+    }
+
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-
 
         // my bootleg mob wand
         /*if (stack.is(Items.STICK) && player.getLastHurtMob() != null) {
@@ -160,7 +174,7 @@ public class OxEntity extends Animal implements NeutralMob {
     public void tick() {
         super.tick();
 
-        if (isSprinting() && level() instanceof ServerLevel serverLevel && getDeltaMovement() != Vec3.ZERO) {
+        if (isSprinting() && level() instanceof ServerLevel serverLevel && getDeltaMovement() != Vec3.ZERO && stunnedTick <= 0) {
             for (int i = 0; i < 10; i++) {
 
                 Vec3 pos = getYawVec(yBodyRot, 0.0D, -1.5D).add(position());
@@ -168,6 +182,44 @@ public class OxEntity extends Animal implements NeutralMob {
             }
         }
         setSprinting(isAggressive() && !isSprinting());
+    }
+
+    @Override
+    public void aiStep() {
+        super.aiStep();
+
+        if (isAlive()) {
+            if (this.stunnedTick > 0) {
+                --this.stunnedTick;
+                this.stunEffect();
+                if (this.stunnedTick == 0) {
+                    this.playSound(SoundEvents.COW_HURT, 1.0F, 0.5F);
+                }
+            }
+        }
+    }
+
+    private void stunEffect() {
+        if (this.random.nextInt(3) == 0) {
+            double d0 = this.getX() - (double)this.getBbWidth() * Math.sin((this.yBodyRot * ((float)Math.PI / 180F))) + (this.random.nextDouble() * 0.6D - 0.3D);
+            double d1 = this.getY() + (double)this.getBbHeight() - 0.3D;
+            double d2 = this.getZ() + (double)this.getBbWidth() * Math.cos((this.yBodyRot * ((float)Math.PI / 180F))) + (this.random.nextDouble() * 0.6D - 0.3D);
+            this.level().addParticle(ParticleTypes.CRIT, d0, d1, d2, 0.4980392156862745D, 0.5137254901960784D, 0.5725490196078431D);
+        }
+
+    }
+
+    public void handleEntityEvent(byte p_33335_) {
+        if (p_33335_ == 39) {
+            this.stunnedTick = 80;
+        }
+
+        super.handleEntityEvent(p_33335_);
+    }
+
+    @Override
+    protected boolean isImmobile() {
+        return super.isImmobile() || this.stunnedTick > 0;
     }
 
     private static Vec3 getYawVec(float yaw, double xOffset, double zOffset) {
@@ -203,12 +255,14 @@ public class OxEntity extends Animal implements NeutralMob {
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
         setVariant(compound.getInt("Variant"));
+        this.stunnedTick = compound.getInt("StunTick");
         readPersistentAngerSaveData(level(), compound);
     }
 
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putInt("Variant", getVariant());
+        compound.putInt("StunTick", this.stunnedTick);
         addPersistentAngerSaveData(compound);
     }
 
