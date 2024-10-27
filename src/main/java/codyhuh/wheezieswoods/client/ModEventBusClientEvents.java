@@ -1,7 +1,9 @@
 package codyhuh.wheezieswoods.client;
 
 import codyhuh.wheezieswoods.WheeziesWoods;
+import codyhuh.wheezieswoods.client.model.CoveredWagonModel;
 import codyhuh.wheezieswoods.client.model.OxModel;
+import codyhuh.wheezieswoods.client.renderer.CoveredWagonRenderer;
 import codyhuh.wheezieswoods.client.renderer.ModBoatRenderer;
 import codyhuh.wheezieswoods.client.renderer.OxRenderer;
 import codyhuh.wheezieswoods.common.blocks.entity.ModBlockEntities;
@@ -30,6 +32,7 @@ public class ModEventBusClientEvents {
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ModModelLayers.OX_LAYER, OxModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.COVERED_WAGON_LAYER, CoveredWagonModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.ASPEN_BOAT_LAYER, BoatModel::createBodyModel);
         event.registerLayerDefinition(ModModelLayers.ASPEN_CHEST_BOAT_LAYER, ChestBoatModel::createBodyModel);
     }
@@ -37,6 +40,7 @@ public class ModEventBusClientEvents {
     @SubscribeEvent
     public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModEntities.OX.get(), OxRenderer::new);
+        event.registerEntityRenderer(ModEntities.COVERED_WAGON.get(), CoveredWagonRenderer::new);
         event.registerEntityRenderer(ModEntities.MOD_BOAT.get(), pContext -> new ModBoatRenderer(pContext, false));
         event.registerEntityRenderer(ModEntities.MOD_CHEST_BOAT.get(), pContext -> new ModBoatRenderer(pContext, true));
 

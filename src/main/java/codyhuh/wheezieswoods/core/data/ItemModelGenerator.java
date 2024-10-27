@@ -25,7 +25,6 @@ public class ItemModelGenerator extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        
         simpleBlockItem(ModBlocks.ASPEN_DOOR);
         trapdoorItem(ModBlocks.ASPEN_TRAPDOOR);
 
@@ -43,6 +42,7 @@ public class ItemModelGenerator extends ItemModelProvider {
         simpleItem(ModItems.ASPEN_BOAT);
         simpleItem(ModItems.ASPEN_CHEST_BOAT);
 
+        simpleItem(ModItems.COVERED_WAGON);
         spawnEgg(ModItems.OX_SPAWN_EGG);
     }
 

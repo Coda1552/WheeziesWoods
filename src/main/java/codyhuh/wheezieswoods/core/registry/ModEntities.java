@@ -1,6 +1,7 @@
 package codyhuh.wheezieswoods.core.registry;
 
 import codyhuh.wheezieswoods.WheeziesWoods;
+import codyhuh.wheezieswoods.common.entity.CoveredWagonEntity;
 import codyhuh.wheezieswoods.common.entity.ModBoatEntity;
 import codyhuh.wheezieswoods.common.entity.ModChestBoatEntity;
 import codyhuh.wheezieswoods.common.entity.OxEntity;
@@ -17,6 +18,10 @@ public class ModEntities {
     public static final RegistryObject<EntityType<OxEntity>> OX =
             ENTITY_TYPES.register("ox", () -> EntityType.Builder.of(OxEntity::new, MobCategory.CREATURE)
                     .sized(1.25f, 1.35f).build("ox"));
+
+    public static final RegistryObject<EntityType<CoveredWagonEntity>> COVERED_WAGON =
+            ENTITY_TYPES.register("covered_wagon", () -> EntityType.Builder.<CoveredWagonEntity>of(CoveredWagonEntity::new, MobCategory.MISC)
+                    .sized(2.5f, 2.5f).build("covered_wagon"));
 
     public static final RegistryObject<EntityType<ModBoatEntity>> MOD_BOAT =
             ENTITY_TYPES.register("mod_boat", () -> EntityType.Builder.<ModBoatEntity>of(ModBoatEntity::new, MobCategory.MISC)
