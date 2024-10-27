@@ -14,6 +14,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.DifficultyInstance;
@@ -103,6 +104,7 @@ public class OxEntity extends Animal implements NeutralMob {
             this.playSound(SoundEvents.RAVAGER_STUNNED, 1.0F, 1.0F);
             this.level().broadcastEntityEvent(this, (byte)39);
             p_33361_.push(this);
+            setRemainingPersistentAngerTime(1);
         }
 
         p_33361_.hurtMarked = true;
@@ -174,6 +176,8 @@ public class OxEntity extends Animal implements NeutralMob {
     public void tick() {
         super.tick();
 
+        System.out.println(getPersistentAngerTarget());
+
         if (isSprinting() && level() instanceof ServerLevel serverLevel && getDeltaMovement() != Vec3.ZERO && stunnedTick <= 0) {
             for (int i = 0; i < 10; i++) {
 
@@ -200,13 +204,9 @@ public class OxEntity extends Animal implements NeutralMob {
     }
 
     private void stunEffect() {
-        if (this.random.nextInt(3) == 0) {
-            double d0 = this.getX() - (double)this.getBbWidth() * Math.sin((this.yBodyRot * ((float)Math.PI / 180F))) + (this.random.nextDouble() * 0.6D - 0.3D);
-            double d1 = this.getY() + (double)this.getBbHeight() - 0.3D;
-            double d2 = this.getZ() + (double)this.getBbWidth() * Math.cos((this.yBodyRot * ((float)Math.PI / 180F))) + (this.random.nextDouble() * 0.6D - 0.3D);
-            this.level().addParticle(ParticleTypes.CRIT, d0, d1, d2, 0.4980392156862745D, 0.5137254901960784D, 0.5725490196078431D);
-        }
+        Vec3 pos = getYawVec(yBodyRot, 0.0D, 1.25D).add(0.0D, 1.5D, 0.0D);
 
+        this.level().addParticle(ParticleTypes.CRIT, pos.x + getRandomX(0.5D), pos.y + position().y, pos.z + getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
     }
 
     public void handleEntityEvent(byte p_33335_) {
