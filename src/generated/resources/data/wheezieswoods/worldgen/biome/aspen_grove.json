@@ -85,7 +85,7 @@
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
       "wheezieswoods:trees_aspen",
-      "wheezieswoods:patch_tall_grass",
+      "wheezieswoods:patch_grass_aspen",
       "wheezieswoods:patch_flowers_aspen",
       "wheezieswoods:huge_mushroom_aspen"
     ],
@@ -147,6 +147,12 @@
         "maxCount": 4,
         "minCount": 2,
         "weight": 12
+      },
+      {
+        "type": "wheezieswoods:ox",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 6
       }
     ],
     "misc": [],

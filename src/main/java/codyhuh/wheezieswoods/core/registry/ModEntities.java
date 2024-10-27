@@ -16,7 +16,7 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<OxEntity>> OX =
             ENTITY_TYPES.register("ox", () -> EntityType.Builder.of(OxEntity::new, MobCategory.CREATURE)
-                    .sized(1.4f, 1.2f).build("ox"));
+                    .sized(1.25f, 1.35f).build("ox"));
 
     public static final RegistryObject<EntityType<ModBoatEntity>> MOD_BOAT =
             ENTITY_TYPES.register("mod_boat", () -> EntityType.Builder.<ModBoatEntity>of(ModBoatEntity::new, MobCategory.MISC)

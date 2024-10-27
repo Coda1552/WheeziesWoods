@@ -1,13 +1,13 @@
 package codyhuh.wheezieswoods.client.model;
 
 import codyhuh.wheezieswoods.common.entity.OxEntity;
-import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.model.AgeableHierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 
-public class OxModel<T extends OxEntity> extends HierarchicalModel<T> {
+public class OxModel<T extends OxEntity> extends AgeableHierarchicalModel<T> {
 	private final ModelPart root;
 	private final ModelPart body;
 	private final ModelPart leftFrontLeg;
@@ -18,6 +18,7 @@ public class OxModel<T extends OxEntity> extends HierarchicalModel<T> {
 	private final ModelPart tail;
 
 	public OxModel(ModelPart root) {
+		super(0.5F, 24.0F);
 		this.root = root.getChild("root");
 		this.body = this.root.getChild("body");
 		this.leftFrontLeg = this.root.getChild("leftFrontLeg");

@@ -4,10 +4,13 @@ import codyhuh.wheezieswoods.WheeziesWoods;
 import codyhuh.wheezieswoods.common.entity.OxEntity;
 import codyhuh.wheezieswoods.core.registry.ModBlocks;
 import codyhuh.wheezieswoods.core.registry.ModEntities;
+import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -18,6 +21,11 @@ public class ModEventBusCommonEvents {
     @SubscribeEvent
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.OX.get(), OxEntity.createOxAttributes().build());
+    }
+
+    @SubscribeEvent
+    public static void registerSpawnPlacements(SpawnPlacementRegisterEvent e) {
+        e.register(ModEntities.OX.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, OxEntity::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
     }
 
     @SubscribeEvent

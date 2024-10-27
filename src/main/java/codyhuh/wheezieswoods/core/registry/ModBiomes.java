@@ -59,7 +59,8 @@ public class ModBiomes {
     BiomeDefaultFeatures.farmAnimals(mobSpawnBuilder);
     mobSpawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 12, 4, 4))
             .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 8, 2, 3))
-            .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.FOX, 12, 2, 4));
+            .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.FOX, 12, 2, 4))
+            .addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModEntities.OX.get(), 6, 1, 2));
     BiomeDefaultFeatures.commonSpawns(mobSpawnBuilder);
 
     return biome(true, 0.4F, 0.7F, biomeGenBuilder, mobSpawnBuilder)
