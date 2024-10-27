@@ -17,13 +17,13 @@ import java.util.List;
 
 public class ModPlacedFeatures {
   public static final ResourceKey<PlacedFeature> TREES_ASPEN = createKey("trees_aspen");
-  public static final ResourceKey<PlacedFeature> PATCH_TALL_GRASS = createKey("patch_tall_grass");
+  public static final ResourceKey<PlacedFeature> PATCH_GRASS_ASPEN = createKey("patch_grass_aspen");
   public static final ResourceKey<PlacedFeature> PATCH_FLOWERS_ASPEN = createKey("patch_flowers_aspen");
   public static final ResourceKey<PlacedFeature> HUGE_MUSHROOM_ASPEN = createKey("huge_mushroom_aspen");
 
   public static void bootstrap(BootstapContext<PlacedFeature> context) {
     register(context, TREES_ASPEN, ModConfiguredFeatures.ASPEN_TREE, VegetationPlacements.treePlacement(CountPlacement.of(25), ModBlocks.ASPEN_SAPLING.get()));
-    register(context, PATCH_TALL_GRASS, VegetationFeatures.PATCH_TALL_GRASS, CountPlacement.of(12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
+    register(context, PATCH_GRASS_ASPEN, VegetationFeatures.PATCH_GRASS, CountPlacement.of(12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
     register(context, PATCH_FLOWERS_ASPEN, ModConfiguredFeatures.ASPEN_GROVE_FLOWERS, CountPlacement.of(3), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
     register(context, HUGE_MUSHROOM_ASPEN, TreeFeatures.HUGE_BROWN_MUSHROOM, CountPlacement.of(1), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
   }

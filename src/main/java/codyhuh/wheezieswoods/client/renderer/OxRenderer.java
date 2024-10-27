@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class OxRenderer extends MobRenderer<OxEntity, OxModel<OxEntity>> {
     private static final ResourceLocation TEXTURE = new ResourceLocation(WheeziesWoods.MOD_ID,"textures/entity/ox/ox.png");
-    private static final ResourceLocation DAISY_TEXTURE = new ResourceLocation(WheeziesWoods.MOD_ID,"textures/entity/ox/daisy_covered_ox.png");
+    private static final ResourceLocation DAISY_TEXTURE = new ResourceLocation(WheeziesWoods.MOD_ID,"textures/entity/ox/oxeye_ox.png");
 
     public OxRenderer(EntityRendererProvider.Context ctx) {
         super(ctx, new OxModel<>(ctx.bakeLayer(ModModelLayers.OX_LAYER)), 0.7F);
