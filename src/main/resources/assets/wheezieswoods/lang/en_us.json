@@ -31,5 +31,8 @@
   "item.wheezieswoods.aspen_chest_boat": "Aspen Boat with Chest",
 
   "item.wheezieswoods.ox_spawn_egg": "Ox Spawn Egg",
-  "entity.wheezieswoods.ox": "Ox"
+  "entity.wheezieswoods.ox": "Ox",
+
+  "item.wheezieswoods.covered_wagon": "Covered Wagon",
+  "entity.wheezieswoods.covered_wagon": "Covered Wagon"
 }
