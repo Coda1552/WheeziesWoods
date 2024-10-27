@@ -62,7 +62,7 @@ public class OxEntity extends Animal implements NeutralMob {
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new ResetUniversalAngerTargetGoal<>(this, false));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, this::isAngryAt));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, 10, true, false, this::isAngryAt));
     }
 
     protected SoundEvent getAmbientSound() {
@@ -86,7 +86,7 @@ public class OxEntity extends Animal implements NeutralMob {
     }
 
     public static AttributeSupplier.Builder createOxAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0D).add(Attributes.MOVEMENT_SPEED, 0.22F).add(Attributes.ATTACK_DAMAGE, 4.0D).add(Attributes.ATTACK_KNOCKBACK, 3.0D);
+        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 14.0D).add(Attributes.MOVEMENT_SPEED, 0.22F).add(Attributes.ATTACK_DAMAGE, 4.0D).add(Attributes.ATTACK_KNOCKBACK, 3.0D);
     }
 
     @Override
@@ -97,6 +97,13 @@ public class OxEntity extends Animal implements NeutralMob {
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
+
+
+        // my bootleg mob wand
+        /*if (stack.is(Items.STICK) && player.getLastHurtMob() != null) {
+            setPersistentAngerTarget(player.getLastHurtMob().getUUID());
+            setRemainingPersistentAngerTime(2000);
+        }*/
 
         if (!level().isClientSide && stack.is(Items.OXEYE_DAISY) && getVariant() == 0) {
             playSound(SoundEvents.HORSE_EAT);
