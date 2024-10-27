@@ -101,14 +101,14 @@ public class OxEntity extends Animal implements NeutralMob {
     protected void blockedByShield(LivingEntity p_33361_) {
         if (this.random.nextFloat() > 0.25F) {
             this.stunnedTick = 80;
-            this.playSound(SoundEvents.RAVAGER_STUNNED, 1.0F, 1.0F);
+            this.playSound(SoundEvents.COW_HURT, 1.0F, 0.5F);
             this.level().broadcastEntityEvent(this, (byte)39);
             p_33361_.push(this);
-            setRemainingPersistentAngerTime(1);
+            setAggressive(false);
+            setTarget(null);
         }
 
         p_33361_.hurtMarked = true;
-
     }
 
     @Override
@@ -155,7 +155,8 @@ public class OxEntity extends Animal implements NeutralMob {
             player.setItemInHand(hand, itemstack1);
 
             if (getVariant() != 1) {
-                setPersistentAngerTarget(player.getUUID());
+                setAggressive(true);
+                setTarget(player);
 
                 playSound(SoundEvents.COW_HURT, 0.6F, 0.5F);
                 if (level() instanceof ServerLevel server) {
@@ -176,16 +177,12 @@ public class OxEntity extends Animal implements NeutralMob {
     public void tick() {
         super.tick();
 
-        System.out.println(getPersistentAngerTarget());
-
-        if (isSprinting() && level() instanceof ServerLevel serverLevel && getDeltaMovement() != Vec3.ZERO && stunnedTick <= 0) {
-            for (int i = 0; i < 10; i++) {
-
+        if (isAggressive() && level() instanceof ServerLevel serverLevel && stunnedTick <= 0) {
+            for (int i = 0; i < 5; i++) {
                 Vec3 pos = getYawVec(yBodyRot, 0.0D, -1.5D).add(position());
                 serverLevel.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, pos.x(), pos.y() + 0.2F, pos.z(), 0, 0.0D, 0.0D, 0.0D, 0.0D);
             }
         }
-        setSprinting(isAggressive() && !isSprinting());
     }
 
     @Override
@@ -197,7 +194,7 @@ public class OxEntity extends Animal implements NeutralMob {
                 --this.stunnedTick;
                 this.stunEffect();
                 if (this.stunnedTick == 0) {
-                    this.playSound(SoundEvents.COW_HURT, 1.0F, 0.5F);
+                    this.playSound(SoundEvents.COW_AMBIENT, 1.0F, 0.7F);
                 }
             }
         }
@@ -300,6 +297,9 @@ public class OxEntity extends Animal implements NeutralMob {
     @Override
     public void setPersistentAngerTarget(@Nullable UUID p_27791_) {
         this.persistentAngerTarget = p_27791_;
+    }
+
+    public void removePersistentAngerTarget() {
     }
 
     @Override
