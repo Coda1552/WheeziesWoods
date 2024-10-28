@@ -13,7 +13,8 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.LivingEntity;
 
 public class CoveredWagonRenderer<T extends CoveredWagonEntity> extends EntityRenderer<T> {
     private static final ResourceLocation TEXTURE = new ResourceLocation(WheeziesWoods.MOD_ID,"textures/entity/covered_wagon.png");
@@ -26,19 +27,29 @@ public class CoveredWagonRenderer<T extends CoveredWagonEntity> extends EntityRe
 
     @Override
     public void render(T entity, float pEntityYaw, float pPartialTick, PoseStack poseStack, MultiBufferSource buffer, int pPackedLight) {
-        super.render(entity, pEntityYaw, pPartialTick, poseStack, buffer, pPackedLight);
+        poseStack.pushPose();
 
         VertexConsumer vertexConsumer = buffer.getBuffer(RenderType.entityTranslucent(TEXTURE));
 
-        poseStack.pushPose();
+        poseStack.translate(0.0F, 1.5D, 0.0F);
+        poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - pEntityYaw));
 
-        poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
-        poseStack.translate(0.0D, -1.5D, 0.0D);
+        float f = (float)entity.getHurtTime() - pPartialTick;
+        float f1 = entity.getDamage() - pPartialTick;
+        if (f1 < 0.0F) {
+            f1 = 0.0F;
+        }
 
-        model.setupAnim(entity, entity.tickCount * 0.5F, 0.3F, entity.tickCount * 0.5F, 0.0F, 0.0F);
+        if (f > 0.0F) {
+            poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.sin(f) * f * f1 / 10.0F * (float)entity.getHurtDir()));
+        }
+
+        poseStack.scale(-1.0F, -1.0F, 1.0F);
+        model.setupAnim(entity, pPartialTick, 0.0F, entity.level().nextSubTickCount(), 0.0F, 0.0F);
         model.renderToBuffer(poseStack, vertexConsumer, pPackedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 
         poseStack.popPose();
+        super.render(entity, pEntityYaw, pPartialTick, poseStack, buffer, pPackedLight);
     }
 
     @Override

@@ -44,7 +44,8 @@ public class CoveredWagonModel<T extends CoveredWagonEntity> extends EntityModel
 
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-
+		//this.frontWheels.xRot = ageInTicks * 0.035F;
+		//this.backWheels.xRot = ageInTicks * 0.035F;
 	}
 
 	@Override
