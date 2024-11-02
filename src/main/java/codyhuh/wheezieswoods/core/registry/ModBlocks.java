@@ -48,10 +48,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> ASPEN_LEAVES = register("aspen_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_LEAVES).ignitedByLava()));
 
-    
     //planks
     public static final RegistryObject<Block> ASPEN_PLANKS = register("aspen_planks",
-            ()-> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)){
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)) {
                 @Override
                 public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {return true;}
                 @Override
@@ -60,7 +59,7 @@ public class ModBlocks {
                 public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {return 5;}
             });
     public static final RegistryObject<Block> ASPEN_STAIRS = register("aspen_stairs",
-            ()-> new StairBlock(() -> ModBlocks.ASPEN_PLANKS.get().defaultBlockState(),BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.NETHER_WOOD)){
+            () -> new StairBlock(() -> ModBlocks.ASPEN_PLANKS.get().defaultBlockState(),BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD)) {
                 @Override
                 public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {return true;}
                 @Override
@@ -116,9 +115,9 @@ public class ModBlocks {
 
     //doors
     public static final RegistryObject<Block> ASPEN_DOOR = register("aspen_door",
-            ()-> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).noOcclusion(), BlockSetType.OAK));
+            () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).noOcclusion(), BlockSetType.OAK));
     public static final RegistryObject<Block> ASPEN_TRAPDOOR = register("aspen_trapdoor",
-            ()-> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).noOcclusion(),BlockSetType.OAK));
+            () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).noOcclusion(),BlockSetType.OAK));
     
     
     public static final RegistryObject<Block> ASPEN_SIGN = BLOCKS.register("aspen_sign",
@@ -132,19 +131,6 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> ASPEN_WALL_HANGING_SIGN = BLOCKS.register("aspen_wall_hanging_sign",
             () -> new ModWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_WALL_HANGING_SIGN), ModWoodTypes.ASPEN));
-
-
-    private static RegistryObject<Block> registerRotatedPillar(String name, Supplier<Block> stripped, BlockBehaviour.Properties properties) {
-        return register(name, () -> new RotatedPillarBlock(properties) {
-            @Override
-            public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
-                if (toolAction == ToolActions.AXE_STRIP) {
-                    return stripped.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS));
-                }
-                return super.getToolModifiedState(state, context, toolAction, simulate);
-            }
-        });
-    }
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block) {
         return register(name, block, new Item.Properties());
@@ -162,13 +148,6 @@ public class ModBlocks {
     }
 
     private static <T extends Block> RegistryObject<T> registerExcludeFromTab(String name, Supplier<T> block){
-        RegistryObject<T> toReturn = BLOCKS.register(name, block);
-        //registerBlockItem(name, toReturn);
-        return toReturn;
+        return BLOCKS.register(name, block);
     }
-
-//    private static <T extends Block>RegistryObject<Item> registerBlockItem(String name,RegistryObject<T> block){
-//        return ModItems.ITEMS.register(name, ()-> new BlockItem(block.get(), new Item.Properties()));
-//    }
-
 }
