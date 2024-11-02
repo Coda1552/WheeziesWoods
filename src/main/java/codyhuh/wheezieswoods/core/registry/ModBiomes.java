@@ -23,12 +23,14 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = WheeziesWoods.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModBiomes {
   public static final ResourceKey<Biome> ASPEN_GROVE = createKey("aspen_grove");
+  public static final ResourceKey<Biome> PRAIRIE = createKey("prairie");
 
   public static void bootstrap(BootstapContext<Biome> context) {
     HolderGetter<PlacedFeature> features = context.lookup(Registries.PLACED_FEATURE);
     HolderGetter<ConfiguredWorldCarver<?>> carvers = context.lookup(Registries.CONFIGURED_CARVER);
 
     context.register(ASPEN_GROVE, aspenGrove(features, carvers));
+    context.register(PRAIRIE, prairie(features, carvers));
   }
 
   public static ResourceKey<Biome> createKey(String name) {
@@ -71,6 +73,42 @@ public class ModBiomes {
                     .fogColor(12638463)
                     .grassColorOverride(15785814)
                     .skyColor(calculateSkyColor(0.7F))
+                    .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                    .build()
+            )
+            .build();
+  }
+
+  private static Biome prairie(HolderGetter<PlacedFeature> features, HolderGetter<ConfiguredWorldCarver<?>> carvers) {
+    BiomeGenerationSettings.Builder biomeGenBuilder = new BiomeGenerationSettings.Builder(features, carvers);
+    globalOverworldGeneration(biomeGenBuilder);
+    BiomeDefaultFeatures.addDefaultOres(biomeGenBuilder);
+    BiomeDefaultFeatures.addDefaultSoftDisks(biomeGenBuilder);
+
+    FeatureOrderUtil.addFeatures(biomeGenBuilder,
+            VegetationPlacements.BROWN_MUSHROOM_NORMAL,
+            VegetationPlacements.RED_MUSHROOM_NORMAL,
+            VegetationPlacements.PATCH_SUGAR_CANE,
+            VegetationPlacements.PATCH_PUMPKIN,
+            VegetationPlacements.PATCH_TALL_GRASS,
+            VegetationPlacements.PATCH_TALL_GRASS_2,
+            VegetationPlacements.PATCH_GRASS_PLAIN
+    );
+
+    biomeGenBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.TREES_PRAIRIE);
+
+    MobSpawnSettings.Builder mobSpawnBuilder = new MobSpawnSettings.Builder();
+    BiomeDefaultFeatures.plainsSpawns(mobSpawnBuilder);
+    mobSpawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 5, 2, 3));
+
+    return biome(true, 0.3F, 0.8F, biomeGenBuilder, mobSpawnBuilder)
+            .specialEffects(new BiomeSpecialEffects.Builder()
+                    .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_MEADOW))
+                    .waterColor(4159204)
+                    .waterFogColor(329011)
+                    .fogColor(12638463)
+                    .grassColorOverride(0xba9f3e)
+                    .skyColor(0x4da3e3)
                     .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
                     .build()
             )

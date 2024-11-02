@@ -22,6 +22,7 @@ public class ModModdedBiomeSlices {
   public static final ResourceKey<ModdedBiomeSlice> WHEEZIES_WOODS = ResourceKey.create(BlueprintDataPackRegistries.MODDED_BIOME_SLICES, new ResourceLocation(WheeziesWoods.MOD_ID, "wheezies_woods"));
 
   public static final ResourceKey<Biome> ASPEN_GROVE_AREA = ModBiomes.createKey("aspen_grove_area");
+  public static final ResourceKey<Biome> PRAIRIE_AREA = ModBiomes.createKey("prairie_area");
 
   public static void bootstrap(BootstapContext<ModdedBiomeSlice> context) {
     List<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> entries = new ArrayList<>();
@@ -31,7 +32,7 @@ public class ModModdedBiomeSlices {
             2,
             BiomeUtil.MultiNoiseModdedBiomeProvider.builder()
                     .biomes(entries::forEach)
-                    .area(ASPEN_GROVE_AREA, ModBiomes.ASPEN_GROVE)
+                    .area(ASPEN_GROVE_AREA, ModBiomes.ASPEN_GROVE).area(PRAIRIE_AREA, ModBiomes.PRAIRIE)
                     .build(),
             LevelStem.OVERWORLD);
     context.register(WHEEZIES_WOODS, wwSlice);
@@ -59,7 +60,7 @@ public class ModModdedBiomeSlices {
     };
     private final ResourceKey<Biome>[][] MIDDLE_BIOMES = new ResourceKey[][]{
             {VANILLA, VANILLA, VANILLA, VANILLA, VANILLA},
-            {VANILLA, VANILLA, VANILLA, VANILLA, VANILLA},
+            {PRAIRIE_AREA, PRAIRIE_AREA, PRAIRIE_AREA, VANILLA, PRAIRIE_AREA},
             {VANILLA, ASPEN_GROVE_AREA, ASPEN_GROVE_AREA, ASPEN_GROVE_AREA, ASPEN_GROVE_AREA},
             {VANILLA, VANILLA, VANILLA, VANILLA, VANILLA},
             {VANILLA, VANILLA, VANILLA, VANILLA, VANILLA}
