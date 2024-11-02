@@ -25,19 +25,19 @@ public class ModModdedBiomeSlices {
 
   public static void bootstrap(BootstapContext<ModdedBiomeSlice> context) {
     List<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> entries = new ArrayList<>();
-    (new PioneerBiomeBuilder()).addBiomes(entries::add);
+    (new WheeziesWoodsBiomeBuilder()).addBiomes(entries::add);
 
-    ModdedBiomeSlice pioneerSlice = new ModdedBiomeSlice(
+    ModdedBiomeSlice wwSlice = new ModdedBiomeSlice(
             2,
             BiomeUtil.MultiNoiseModdedBiomeProvider.builder()
                     .biomes(entries::forEach)
                     .area(ASPEN_GROVE_AREA, ModBiomes.ASPEN_GROVE)
                     .build(),
             LevelStem.OVERWORLD);
-    context.register(WHEEZIES_WOODS, pioneerSlice);
+    context.register(WHEEZIES_WOODS, wwSlice);
   }
 
-  private static class PioneerBiomeBuilder {
+  private static class WheeziesWoodsBiomeBuilder {
     private final Climate.Parameter FULL_RANGE = Climate.Parameter.span(-1.0F, 1.0F);
     private final Climate.Parameter[] temperatures = new Climate.Parameter[]{Climate.Parameter.span(-1.0F, -0.45F), Climate.Parameter.span(-0.45F, -0.15F), Climate.Parameter.span(-0.15F, 0.2F), Climate.Parameter.span(0.2F, 0.55F), Climate.Parameter.span(0.55F, 1.0F)};
     private final Climate.Parameter[] humidities = new Climate.Parameter[]{Climate.Parameter.span(-1.0F, -0.35F), Climate.Parameter.span(-0.35F, -0.1F), Climate.Parameter.span(-0.1F, 0.1F), Climate.Parameter.span(0.1F, 0.3F), Climate.Parameter.span(0.3F, 1.0F)};
