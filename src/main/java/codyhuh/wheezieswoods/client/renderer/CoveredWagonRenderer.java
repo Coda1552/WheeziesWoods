@@ -3,6 +3,7 @@ package codyhuh.wheezieswoods.client.renderer;
 import codyhuh.wheezieswoods.WheeziesWoods;
 import codyhuh.wheezieswoods.client.ModModelLayers;
 import codyhuh.wheezieswoods.client.model.CoveredWagonModel;
+import codyhuh.wheezieswoods.client.renderer.layers.PassengerLayer;
 import codyhuh.wheezieswoods.common.entity.CoveredWagonEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -11,18 +12,22 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
 
-public class CoveredWagonRenderer<T extends CoveredWagonEntity> extends EntityRenderer<T> {
+public class CoveredWagonRenderer<T extends CoveredWagonEntity> extends LivingEntityRenderer<T, CoveredWagonModel<T>> {
     private static final ResourceLocation TEXTURE = new ResourceLocation(WheeziesWoods.MOD_ID,"textures/entity/covered_wagon.png");
-    private final CoveredWagonModel<T> model;
 
     public CoveredWagonRenderer(EntityRendererProvider.Context ctx) {
-        super(ctx);
-        model = new CoveredWagonModel<>(ctx.bakeLayer(ModModelLayers.COVERED_WAGON_LAYER));
+        super(ctx, new CoveredWagonModel<>(ctx.bakeLayer(ModModelLayers.COVERED_WAGON_LAYER)), 0.0F);
+        addLayer(new PassengerLayer<>(this));
+    }
+
+    @Override
+    protected void renderNameTag(T p_114498_, Component p_114499_, PoseStack p_114500_, MultiBufferSource p_114501_, int p_114502_) {
     }
 
     @Override
@@ -41,12 +46,10 @@ public class CoveredWagonRenderer<T extends CoveredWagonEntity> extends EntityRe
         }
 
         if (f > 0.0F) {
-            poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.sin(f) * f * f1 / 10.0F * (float)entity.getHurtDir()));
+            poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.sin(f) * f * f1 / 10.0F * (float)entity.getDataHurtDir()));
         }
 
         poseStack.scale(-1.0F, -1.0F, 1.0F);
-        model.setupAnim(entity, pPartialTick, 0.0F, entity.level().nextSubTickCount(), 0.0F, 0.0F);
-        model.renderToBuffer(poseStack, vertexConsumer, pPackedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 
         poseStack.popPose();
         super.render(entity, pEntityYaw, pPartialTick, poseStack, buffer, pPackedLight);

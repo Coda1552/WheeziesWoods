@@ -12,11 +12,13 @@ public class CoveredWagonModel<T extends CoveredWagonEntity> extends EntityModel
 	private final ModelPart wagon;
 	private final ModelPart backWheels;
 	private final ModelPart frontWheels;
+	public final ModelPart passenger;
 
 	public CoveredWagonModel(ModelPart root) {
 		this.wagon = root.getChild("wagon");
 		this.backWheels = this.wagon.getChild("backWheels");
 		this.frontWheels = this.wagon.getChild("frontWheels");
+		this.passenger = this.wagon.getChild("passenger");
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -24,20 +26,18 @@ public class CoveredWagonModel<T extends CoveredWagonEntity> extends EntityModel
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
 		PartDefinition wagon = partdefinition.addOrReplaceChild("wagon", CubeListBuilder.create().texOffs(0, 0).addBox(-13.0F, -2.35F, -28.0F, 26.0F, 5.0F, 51.0F, new CubeDeformation(0.0F))
-		.texOffs(0, 56).addBox(-13.0F, -30.35F, -19.0F, 26.0F, 28.0F, 42.0F, new CubeDeformation(0.0F))
-		.texOffs(0, 126).addBox(-10.0F, 2.65F, -21.0F, 20.0F, 10.0F, 42.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 4.45F, 0.0F));
+				.texOffs(0, 56).addBox(-13.0F, -30.35F, -19.0F, 26.0F, 28.0F, 42.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 126).addBox(-10.0F, 2.65F, -21.0F, 20.0F, 10.0F, 42.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 4.45F, 0.0F));
 
-		PartDefinition backWheels = wagon.addOrReplaceChild("backWheels", CubeListBuilder.create().texOffs(124, 126).addBox(-13.0F, -1.0F, -1.0F, 26.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 12.65F, 16.0F));
+		PartDefinition backWheels = wagon.addOrReplaceChild("backWheels", CubeListBuilder.create().texOffs(124, 126).addBox(-13.0F, -1.0F, -1.0F, 26.0F, 2.0F, 2.0F, new CubeDeformation(0.0F))
+				.texOffs(136, 56).addBox(-12.0F, -7.0F, -7.0F, 0.0F, 14.0F, 14.0F, new CubeDeformation(0.0F))
+				.texOffs(136, 56).addBox(12.0F, -7.0F, -7.0F, 0.0F, 14.0F, 14.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 12.65F, 16.0F));
 
-		PartDefinition cube_r1 = backWheels.addOrReplaceChild("cube_r1", CubeListBuilder.create().texOffs(136, 56).addBox(0.0F, -7.0F, -7.0F, 0.0F, 14.0F, 14.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(12.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.1309F));
+		PartDefinition frontWheels = wagon.addOrReplaceChild("frontWheels", CubeListBuilder.create().texOffs(124, 126).addBox(-13.0F, -1.0F, -1.0F, 26.0F, 2.0F, 2.0F, new CubeDeformation(0.0F))
+				.texOffs(136, 56).addBox(-12.0F, -7.0F, -7.0F, 0.0F, 14.0F, 14.0F, new CubeDeformation(0.0F))
+				.texOffs(136, 56).addBox(12.0F, -7.0F, -7.0F, 0.0F, 14.0F, 14.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 12.65F, -16.0F));
 
-		PartDefinition cube_r2 = backWheels.addOrReplaceChild("cube_r2", CubeListBuilder.create().texOffs(136, 56).addBox(0.0F, -7.0F, -7.0F, 0.0F, 14.0F, 14.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-12.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.1309F));
-
-		PartDefinition frontWheels = wagon.addOrReplaceChild("frontWheels", CubeListBuilder.create().texOffs(124, 126).addBox(-13.0F, -1.0F, -1.0F, 26.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 12.65F, -16.0F));
-
-		PartDefinition cube_r3 = frontWheels.addOrReplaceChild("cube_r3", CubeListBuilder.create().texOffs(136, 56).addBox(0.0F, -7.0F, -7.0F, 0.0F, 14.0F, 14.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(12.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.1309F));
-
-		PartDefinition cube_r4 = frontWheels.addOrReplaceChild("cube_r4", CubeListBuilder.create().texOffs(136, 56).addBox(0.0F, -7.0F, -7.0F, 0.0F, 14.0F, 14.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-12.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.1309F));
+		PartDefinition passenger = wagon.addOrReplaceChild("passenger", CubeListBuilder.create(), PartPose.offset(0.0F, -2.35F, -24.5F));
 
 		return LayerDefinition.create(meshdefinition, 256, 256);
 	}

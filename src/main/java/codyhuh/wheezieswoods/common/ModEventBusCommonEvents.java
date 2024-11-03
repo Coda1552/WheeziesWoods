@@ -4,6 +4,7 @@ import codyhuh.wheezieswoods.WheeziesWoods;
 import codyhuh.wheezieswoods.common.entity.OxEntity;
 import codyhuh.wheezieswoods.core.registry.ModBlocks;
 import codyhuh.wheezieswoods.core.registry.ModEntities;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
@@ -21,6 +22,7 @@ public class ModEventBusCommonEvents {
     @SubscribeEvent
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.OX.get(), OxEntity.createOxAttributes().build());
+        event.put(ModEntities.COVERED_WAGON.get(), LivingEntity.createLivingAttributes().build());
     }
 
     @SubscribeEvent

@@ -38,6 +38,7 @@ public class CoveredWagonItem extends Item {
                 CoveredWagonEntity wagon = this.newWagon(pLevel, hitresult);
 
                 wagon.setYRot(pPlayer.getYRot());
+                wagon.moveTo(hitresult.getLocation().x, hitresult.getLocation().y, hitresult.getLocation().z);
 
                 if (!pLevel.noCollision(wagon, wagon.getBoundingBox())) {
                     return InteractionResultHolder.fail(itemstack);

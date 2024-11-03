@@ -20,9 +20,10 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
+import java.util.Collections;
 import java.util.List;
 
-public class CoveredWagonEntity extends Entity {
+public class CoveredWagonEntity extends LivingEntity {
     private static final EntityDataAccessor<Integer> DATA_ID_HURT = SynchedEntityData.defineId(CoveredWagonEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DATA_ID_HURTDIR = SynchedEntityData.defineId(CoveredWagonEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Float> DATA_ID_DAMAGE = SynchedEntityData.defineId(CoveredWagonEntity.class, EntityDataSerializers.FLOAT);
@@ -35,36 +36,38 @@ public class CoveredWagonEntity extends Entity {
 
     public CoveredWagonEntity(EntityType<? extends CoveredWagonEntity> p_19870_, Level p_19871_) {
         super(p_19870_, p_19871_);
-        this.blocksBuilding = true;
-        setNoGravity(false);
     }
 
     public CoveredWagonEntity(Level pLevel, double pX, double pY, double pZ) {
         this(ModEntities.COVERED_WAGON.get(), pLevel);
-        this.setPos(pX, pY, pZ);
-        this.xo = pX;
-        this.yo = pY;
-        this.zo = pZ;
+    }
+
+    @Override
+    public boolean attackable() {
+        return false;
     }
 
     @Override
     protected void defineSynchedData() {
+        super.defineSynchedData();
         this.entityData.define(DATA_ID_HURT, 0);
         this.entityData.define(DATA_ID_HURTDIR, 1);
         this.entityData.define(DATA_ID_DAMAGE, 0.0F);
     }
 
     @Override
-    protected void readAdditionalSaveData(CompoundTag p_20052_) {
+    public void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
     }
 
     @Override
-    protected void addAdditionalSaveData(CompoundTag p_20139_) {
+    public void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
     }
 
     @Override
     protected void positionRider(Entity passenger, MoveFunction moveFunction) {
-        Vec3 pos = getYawVec(getYRot(), 0.0D, 1.5D).add(position()).add(0.0D, 0.8D, 0.0D);
+        Vec3 pos = getYawVec(getYRot(), 0.0D, 0.0D).add(position()).add(0.0D, 0.8D, 0.0D);
 
         passenger.setYBodyRot(getYRot());
 
@@ -87,11 +90,16 @@ public class CoveredWagonEntity extends Entity {
         return true;
     }
 
+    @Override
+    public HumanoidArm getMainArm() {
+        return null;
+    }
+
     public boolean hurt(DamageSource p_38319_, float p_38320_) {
         if (this.isInvulnerableTo(p_38319_)) {
             return false;
         } else if (!this.level().isClientSide && !this.isRemoved()) {
-            this.setHurtDir(-this.getHurtDir());
+            this.setHurtDir(-this.getDataHurtDir());
             this.setHurtTime(10);
             this.setDamage(this.getDamage() + p_38320_ * 10.0F);
             this.markHurt();
@@ -148,9 +156,23 @@ public class CoveredWagonEntity extends Entity {
     }
 
     public void animateHurt(float p_265761_) {
-        this.setHurtDir(-this.getHurtDir());
+        this.setHurtDir(-this.getDataHurtDir());
         this.setHurtTime(10);
         this.setDamage(this.getDamage() * 11.0F);
+    }
+
+    @Override
+    public Iterable<ItemStack> getArmorSlots() {
+        return Collections.emptySet();
+    }
+
+    @Override
+    public ItemStack getItemBySlot(EquipmentSlot p_21127_) {
+        return ItemStack.EMPTY;
+    }
+
+    @Override
+    public void setItemSlot(EquipmentSlot p_21036_, ItemStack p_21037_) {
     }
 
     public boolean isPickable() {
@@ -170,15 +192,8 @@ public class CoveredWagonEntity extends Entity {
     public void tick() {
         // todo - rewrite movement
         if (this.isControlledByLocalInstance() && getControllingPassenger() != null) {
-            if (level().isClientSide) {
-                if (Math.abs(getControllingPassenger().zza) > 0.0F) {
-                    Vec3 vec = getDeltaMovement().add(getControllingPassenger().getForward()).multiply(0.25F, 0.0F, 0.25F)/*.yRot(look)*/;
-                    setDeltaMovement(vec);
-
-                    setYRot(getControllingPassenger().getYRot());
-                }
-            }
-            move(MoverType.SELF, getDeltaMovement());
+            move(MoverType.SELF, getControllingPassenger().getDeltaMovement().multiply(8.0F, 0.0F, 8.0F));
+            setYRot(getControllingPassenger().getYRot());
         }
 
         if (this.getHurtTime() > 0) {
@@ -239,7 +254,7 @@ public class CoveredWagonEntity extends Entity {
         this.entityData.set(DATA_ID_HURTDIR, p_38363_);
     }
 
-    public int getHurtDir() {
+    public int getDataHurtDir() {
         return this.entityData.get(DATA_ID_HURTDIR);
     }
 
