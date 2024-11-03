@@ -38,7 +38,7 @@ public class PassengerLayer<T extends LivingEntity, M extends EntityModel<T>> ex
 
                 pMatrixStack.mulPose(Axis.XP.rotationDegrees(180F));
                 pMatrixStack.translate(0.0F, -1.0F, 0.0F);
-                pMatrixStack.mulPose(Axis.YP.rotation(0F));
+                pMatrixStack.mulPose(Axis.YP.rotation(180.0F - pNetHeadYaw));
 
                 EntityRenderUtil.renderEntity(passenger, pPartialTicks, pMatrixStack, pBuffer, pPackedLightIn);
                 pMatrixStack.popPose();

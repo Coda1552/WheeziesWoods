@@ -89,13 +89,12 @@ public class ModBiomes {
             VegetationPlacements.BROWN_MUSHROOM_NORMAL,
             VegetationPlacements.RED_MUSHROOM_NORMAL,
             VegetationPlacements.PATCH_SUGAR_CANE,
-            VegetationPlacements.PATCH_PUMPKIN,
-            VegetationPlacements.PATCH_TALL_GRASS,
-            VegetationPlacements.PATCH_TALL_GRASS_2,
-            VegetationPlacements.PATCH_GRASS_PLAIN
+            VegetationPlacements.PATCH_PUMPKIN
     );
 
     biomeGenBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.TREES_PRAIRIE);
+    biomeGenBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.BUSH_PRAIRIE);
+    biomeGenBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.GRASS_PRAIRIE);
 
     MobSpawnSettings.Builder mobSpawnBuilder = new MobSpawnSettings.Builder();
     BiomeDefaultFeatures.plainsSpawns(mobSpawnBuilder);
@@ -107,7 +106,7 @@ public class ModBiomes {
                     .waterColor(4159204)
                     .waterFogColor(329011)
                     .fogColor(12638463)
-                    .grassColorOverride(0xba9f3e)
+                    .grassColorOverride(0xe6f477)
                     .skyColor(0x4da3e3)
                     .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
                     .build()

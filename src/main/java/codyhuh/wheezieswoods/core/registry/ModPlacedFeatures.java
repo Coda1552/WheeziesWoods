@@ -21,6 +21,8 @@ public class ModPlacedFeatures {
   public static final ResourceKey<PlacedFeature> PATCH_FLOWERS_ASPEN = createKey("patch_flowers_aspen");
   public static final ResourceKey<PlacedFeature> HUGE_MUSHROOM_ASPEN = createKey("huge_mushroom_aspen");
   public static final ResourceKey<PlacedFeature> TREES_PRAIRIE = createKey("trees_prairie");
+  public static final ResourceKey<PlacedFeature> BUSH_PRAIRIE = createKey("bush_prairie");
+  public static final ResourceKey<PlacedFeature> GRASS_PRAIRIE = createKey("grass_prairie");
 
   public static void bootstrap(BootstapContext<PlacedFeature> context) {
     register(context, TREES_ASPEN, ModConfiguredFeatures.ASPEN_TREE, VegetationPlacements.treePlacement(CountPlacement.of(25), ModBlocks.ASPEN_SAPLING.get()));
@@ -28,6 +30,8 @@ public class ModPlacedFeatures {
     register(context, PATCH_FLOWERS_ASPEN, ModConfiguredFeatures.ASPEN_GROVE_FLOWERS, CountPlacement.of(3), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
     register(context, HUGE_MUSHROOM_ASPEN, TreeFeatures.HUGE_BROWN_MUSHROOM, CountPlacement.of(1), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
     register(context, TREES_PRAIRIE, TreeFeatures.FANCY_OAK, CountPlacement.of(1), RarityFilter.onAverageOnceEvery(15), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
+    register(context, BUSH_PRAIRIE, ModConfiguredFeatures.PRAIRIE_BUSH, CountPlacement.of(3), RarityFilter.onAverageOnceEvery(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
+    register(context, GRASS_PRAIRIE, ModConfiguredFeatures.PRAIRIE_GRASS, CountPlacement.of(20), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
   }
 
   private static ResourceKey<PlacedFeature> createKey(String name) {

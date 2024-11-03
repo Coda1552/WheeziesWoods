@@ -19,13 +19,17 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.Set;
 
 public class ModBlockLootTables extends BlockLootSubProvider {
-    //keep an eye on this, was asked to make public but was protected
+
     public ModBlockLootTables() {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags());
     }
 
     @Override
     protected void generate() {
+
+        this.add(ModBlocks.PRAIRIE_GRASS.get(), createGrassDrops(ModBlocks.PRAIRIE_GRASS.get()));
+
+        /// ASPEN ///
         this.dropSelf(ModBlocks.ASPEN_PLANKS.get());
         this.dropSelf(ModBlocks.ASPEN_STAIRS.get());
         this.dropSelf(ModBlocks.ASPEN_FENCE.get());
@@ -34,20 +38,14 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.ASPEN_PRESSURE_PLATE.get());
         this.dropSelf(ModBlocks.ASPEN_TRAPDOOR.get());
 
-        this.add(ModBlocks.ASPEN_SLAB.get(),
-                block -> createSlabItemTable(ModBlocks.ASPEN_SLAB.get()));
+        this.add(ModBlocks.ASPEN_SLAB.get(), block -> createSlabItemTable(ModBlocks.ASPEN_SLAB.get()));
 
-        this.add(ModBlocks.ASPEN_DOOR.get(),
-                block -> createDoorTable(ModBlocks.ASPEN_DOOR.get()));
+        this.add(ModBlocks.ASPEN_DOOR.get(), block -> createDoorTable(ModBlocks.ASPEN_DOOR.get()));
 
-        this.add(ModBlocks.ASPEN_SIGN.get(),
-                block -> createSingleItemTable(ModItems.ASPEN_SIGN.get()));
-        this.add(ModBlocks.ASPEN_WALL_SIGN.get(),
-                block -> createSingleItemTable(ModItems.ASPEN_SIGN.get()));
-        this.add(ModBlocks.ASPEN_HANGING_SIGN.get(),
-                block -> createSingleItemTable(ModItems.ASPEN_HANGING_SIGN.get()));
-        this.add(ModBlocks.ASPEN_WALL_HANGING_SIGN.get(),
-                block -> createSingleItemTable(ModItems.ASPEN_HANGING_SIGN.get()));
+        this.add(ModBlocks.ASPEN_SIGN.get(), block -> createSingleItemTable(ModItems.ASPEN_SIGN.get()));
+        this.add(ModBlocks.ASPEN_WALL_SIGN.get(), block -> createSingleItemTable(ModItems.ASPEN_SIGN.get()));
+        this.add(ModBlocks.ASPEN_HANGING_SIGN.get(), block -> createSingleItemTable(ModItems.ASPEN_HANGING_SIGN.get()));
+        this.add(ModBlocks.ASPEN_WALL_HANGING_SIGN.get(), block -> createSingleItemTable(ModItems.ASPEN_HANGING_SIGN.get()));
 
         this.dropSelf(ModBlocks.ASPEN_LOG.get());
         this.dropSelf(ModBlocks.STRIPPED_ASPEN_LOG.get());
@@ -55,13 +53,9 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.STRIPPED_ASPEN_WOOD.get());
 
         this.dropSelf(ModBlocks.ASPEN_SAPLING.get());
-        this.add(ModBlocks.POTTED_ASPEN_SAPLING.get(),
-                createPotFlowerItemTable(ModBlocks.ASPEN_SAPLING.get()));
+        this.add(ModBlocks.POTTED_ASPEN_SAPLING.get(), createPotFlowerItemTable(ModBlocks.ASPEN_SAPLING.get()));
 
-        this.add(ModBlocks.ASPEN_LEAVES.get(), (p_280937_) -> {
-            return this.createLeavesDrops(p_280937_, ModBlocks.ASPEN_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES);
-        });
-
+        this.add(ModBlocks.ASPEN_LEAVES.get(), (p_280937_) -> this.createLeavesDrops(p_280937_, ModBlocks.ASPEN_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
     }
 
     @Override

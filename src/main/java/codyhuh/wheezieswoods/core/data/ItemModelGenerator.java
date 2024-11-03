@@ -25,6 +25,10 @@ public class ItemModelGenerator extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        saplingItem(ModBlocks.PRAIRIE_GRASS);
+
+        saplingItem(ModBlocks.ASPEN_SAPLING);
+
         simpleBlockItem(ModBlocks.ASPEN_DOOR);
         trapdoorItem(ModBlocks.ASPEN_TRAPDOOR);
 

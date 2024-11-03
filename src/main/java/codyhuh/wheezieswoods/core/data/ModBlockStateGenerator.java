@@ -20,6 +20,10 @@ public class ModBlockStateGenerator extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
 
+        /// PRAIRIE ///
+        simpleBlock(ModBlocks.PRAIRIE_GRASS.get(), models().cross("prairie_grass", blockTexture(ModBlocks.PRAIRIE_GRASS.get())).renderType("cutout"));
+
+        /// ASPEN ///
         blockWithItem(ModBlocks.ASPEN_PLANKS);
         stairsBlock(((StairBlock) ModBlocks.ASPEN_STAIRS.get()), blockTexture(ModBlocks.ASPEN_PLANKS.get()));
         slabBlock(((SlabBlock) ModBlocks.ASPEN_SLAB.get()), blockTexture(ModBlocks.ASPEN_PLANKS.get()), blockTexture(ModBlocks.ASPEN_PLANKS.get()));
@@ -33,13 +37,16 @@ public class ModBlockStateGenerator extends BlockStateProvider {
         
         axisBlock(((RotatedPillarBlock) ModBlocks.ASPEN_WOOD.get()), blockTexture(ModBlocks.ASPEN_LOG.get()), blockTexture(ModBlocks.ASPEN_LOG.get()));
         axisBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_ASPEN_LOG.get()), blockTexture(ModBlocks.STRIPPED_ASPEN_LOG.get()), new ResourceLocation(WheeziesWoods.MOD_ID, "block/stripped_aspen_log_top"));
+        axisBlock(((RotatedPillarBlock) ModBlocks.ASPEN_LOG.get()), blockTexture(ModBlocks.ASPEN_LOG.get()), new ResourceLocation(WheeziesWoods.MOD_ID, "block/aspen_log_top"));
         axisBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_ASPEN_WOOD.get()), blockTexture(ModBlocks.STRIPPED_ASPEN_LOG.get()), blockTexture(ModBlocks.STRIPPED_ASPEN_LOG.get()));
 
+        blockItem(ModBlocks.ASPEN_LOG);
         blockItem(ModBlocks.STRIPPED_ASPEN_LOG);
         blockItem(ModBlocks.ASPEN_WOOD);
         blockItem(ModBlocks.STRIPPED_ASPEN_WOOD);
 
         simpleBlockWithItem(ModBlocks.POTTED_ASPEN_SAPLING.get(), models().singleTexture("potted_aspen_sapling", new ResourceLocation("flower_pot_cross"), "plant", blockTexture(ModBlocks.ASPEN_SAPLING.get())).renderType("cutout"));
+        simpleBlock(ModBlocks.ASPEN_SAPLING.get(), models().singleTexture("aspen_sapling", new ResourceLocation("cross"), "cross", blockTexture(ModBlocks.ASPEN_SAPLING.get())).renderType("cutout"));
 
         signBlock(((StandingSignBlock) ModBlocks.ASPEN_SIGN.get()), ((WallSignBlock) ModBlocks.ASPEN_WALL_SIGN.get()),
                 blockTexture(ModBlocks.ASPEN_PLANKS.get()));
