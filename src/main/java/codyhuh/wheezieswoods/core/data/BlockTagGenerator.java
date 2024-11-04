@@ -24,6 +24,14 @@ public class BlockTagGenerator extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
+        this.tag(BlockTags.REPLACEABLE).add(
+                ModBlocks.PRAIRIE_GRASS.get()
+        );
+
+        this.tag(BlockTags.REPLACEABLE_BY_TREES).add(
+                ModBlocks.PRAIRIE_GRASS.get()
+        );
+
         this.tag(BlockTags.MINEABLE_WITH_AXE).add(
                 ModBlocks.ASPEN_PLANKS.get(),
                 ModBlocks.ASPEN_STAIRS.get(),

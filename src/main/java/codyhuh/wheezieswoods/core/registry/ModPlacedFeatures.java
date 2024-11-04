@@ -29,7 +29,7 @@ public class ModPlacedFeatures {
     register(context, PATCH_GRASS_ASPEN, VegetationFeatures.PATCH_GRASS, CountPlacement.of(12), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome());
     register(context, PATCH_FLOWERS_ASPEN, ModConfiguredFeatures.ASPEN_GROVE_FLOWERS, CountPlacement.of(3), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
     register(context, HUGE_MUSHROOM_ASPEN, TreeFeatures.HUGE_BROWN_MUSHROOM, CountPlacement.of(1), RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
-    register(context, TREES_PRAIRIE, TreeFeatures.FANCY_OAK, CountPlacement.of(1), RarityFilter.onAverageOnceEvery(15), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
+    register(context, TREES_PRAIRIE, TreeFeatures.FANCY_OAK, CountPlacement.of(1), RarityFilter.onAverageOnceEvery(25), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
     register(context, BUSH_PRAIRIE, ModConfiguredFeatures.PRAIRIE_BUSH, CountPlacement.of(3), RarityFilter.onAverageOnceEvery(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
     register(context, GRASS_PRAIRIE, ModConfiguredFeatures.PRAIRIE_GRASS, CountPlacement.of(20), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome());
   }

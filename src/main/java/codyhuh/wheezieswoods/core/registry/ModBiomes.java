@@ -93,7 +93,7 @@ public class ModBiomes {
     );
 
     biomeGenBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.TREES_PRAIRIE);
-    biomeGenBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.BUSH_PRAIRIE);
+    //biomeGenBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.BUSH_PRAIRIE);
     biomeGenBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.GRASS_PRAIRIE);
 
     MobSpawnSettings.Builder mobSpawnBuilder = new MobSpawnSettings.Builder();
