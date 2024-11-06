@@ -1,9 +1,9 @@
-package codyhuh.wheezieswoods.common.blocks.entity;
+package codyhuh.wheezieswoods.core.registry;
 
 import codyhuh.wheezieswoods.WheeziesWoods;
-import codyhuh.wheezieswoods.core.registry.ModBlocks;
+import codyhuh.wheezieswoods.common.blocks.entity.ModHangingSignBlockEntity;
+import codyhuh.wheezieswoods.common.blocks.entity.ModSignBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;

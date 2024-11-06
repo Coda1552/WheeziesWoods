@@ -1,6 +1,6 @@
 package codyhuh.wheezieswoods;
 
-import codyhuh.wheezieswoods.common.blocks.entity.ModBlockEntities;
+import codyhuh.wheezieswoods.core.registry.ModBlockEntities;
 import codyhuh.wheezieswoods.core.registry.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
