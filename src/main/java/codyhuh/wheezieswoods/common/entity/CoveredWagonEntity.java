@@ -67,9 +67,7 @@ public class CoveredWagonEntity extends LivingEntity {
 
     @Override
     protected void positionRider(Entity passenger, MoveFunction moveFunction) {
-        Vec3 pos = getYawVec(getYRot(), 0.0D, 0.0D).add(position()).add(0.0D, 0.8D, 0.0D);
-
-        passenger.setYBodyRot(getYRot());
+        Vec3 pos = getYawVec(getYRot(), 0.0D, 1.5D).add(position()).add(0.0D, 0.8D, 0.0D);
 
         moveFunction.accept(passenger, pos.x, pos.y, pos.z);
     }
