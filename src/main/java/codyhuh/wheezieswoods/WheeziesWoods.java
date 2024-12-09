@@ -17,6 +17,7 @@ public class WheeziesWoods {
         ModItems.ITEMS.register(bus);
         ModTabs.CREATIVE_TABS.register(bus);
         ModBlockEntities.BLOCK_ENTITIES.register(bus);
+        ModTrunkPlacers.TRUNK_PLACERS.register(bus);
         ModEntities.ENTITY_TYPES.register(bus);
     }
 
